@@ -1,132 +1,387 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🧠 ContextHub
 
-Currently, two official plugins are available:
+### AI-Powered Developer Intelligence for Repository Exploration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tambo AI](https://img.shields.io/badge/Tambo_AI-Integrated-FF6B6B?style=for-the-badge)](https://tambo.ai)
 
-## React Compiler
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Overview
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    # ContextHub (contexthub)
+**ContextHub** is a context-aware developer UI that revolutionizes how developers explore and understand repositories. Built with React + Vite, it combines intelligent repository indexing with AI-powered insights to accelerate developer onboarding and productivity.
 
-    Context-aware developer UI that surfaces repository files, PRs, and integrates with the Tambo AI provider.
+### ✨ Why ContextHub?
 
-    This README explains how to set up the project locally, required environment variables / tokens, and how to upload the repository to your GitHub account.
+- 🔍 **Smart Exploration**: Navigate codebases with an interactive folder tree and intelligent search
+- 🤖 **AI Assistant**: Ask natural language questions about your code with Tambo AI integration
+- 📊 **Visual Insights**: Render interactive cards, charts, and visualizations for better understanding
+- 🔄 **PR Analysis**: Deep-dive into pull requests and track file changes effortlessly
+- ⚡ **Lightning Fast**: Built on Vite for instant hot module replacement and blazing performance
 
-    ---
+---
 
-    ## Prerequisites
+## 🎯 Features
 
-    - Node.js 18+ (LTS recommended)
-    - npm (comes with Node.js) or an alternative package manager
-    - Git
-    - A Tambo API key (required) — obtain from your Tambo account
-    - A GitHub Personal Access Token (recommended) if you need private repo access or to avoid low unauthenticated rate limits
+<table>
+<tr>
+<td width="50%">
 
-    ---
+### 📁 Repository Intelligence
+- Interactive folder tree navigation
+- Syntax-highlighted file viewer
+- File metadata (size, lines, language)
+- Code pattern search
+- Quick links to important files
 
-    ## Quick start (local)
+</td>
+<td width="50%">
 
-    1. Clone or copy the repo to your machine.
+### 🤖 AI-Powered Assistance
+- Natural language code queries
+- Context-aware responses
+- Interactive UI cards
+- Smart recommendations
+- Programmable file operations
 
-    2. Install dependencies:
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-    ```bash
-    npm install
-    ```
+### 🔄 Pull Request Management
+- List and filter PRs
+- View changed files
+- Detailed PR information
+- Status tracking
+- Review insights
 
-    3. Create an environment file at the project root called `.env.local` and add the required keys (do NOT commit this file):
+</td>
+<td width="50%">
 
-    ```env
-    # Required: Tambo API key
-    VITE_TAMBO_API_KEY=your_tambo_api_key_here
+### 🛠️ Developer Tools
+- GitHub API integration
+- Real-time repository indexing
+- Customizable search patterns
+- Code snippet extraction
+- Automated workflows
 
-    # Recommended: GitHub Personal Access Token (to avoid low rate limits and to access private repos)
-    VITE_GITHUB_TOKEN=ghp_... (or github_pat_...)
-    ```
+</td>
+</tr>
+</table>
 
-    4. Start the dev server:
+---
 
-    ```bash
-    npm run dev
-    ```
+## 📋 Prerequisites
 
-    Open the URL shown in the terminal (usually http://localhost:5173).
+Before you begin, ensure you have the following installed:
 
-    ---
+| Requirement | Version | Purpose |
+|------------|---------|---------|
+| **Node.js** | 18+ (LTS) | Runtime environment |
+| **npm** | Latest | Package management |
+| **Git** | Latest | Version control |
+| **Tambo API Key** | - | AI features (required) |
+| **GitHub PAT** | - | API access (recommended) |
 
-    ## npm scripts
+---
 
-    - `npm run dev` — start development server
-    - `npm run build` — build for production (`tsc -b && vite build`)
-    - `npm run preview` — preview production build
-    - `npm run lint` — run ESLint
+## 🚀 Quick Start
 
-    ---
+### 1️⃣ Clone the Repository
 
-    ## Environment variables
+```bash
+git clone https://github.com/yourusername/contexthub.git
+cd contexthub
+```
 
-    - `VITE_TAMBO_API_KEY` (required) — API key used by the `@tambo-ai/react` provider. Missing this will cause runtime validation errors.
-    - `VITE_GITHUB_TOKEN` (recommended) — GitHub Personal Access Token used by `src/services/github/*`. Without it, unauthenticated API requests are rate limited (60 requests/hour). Recommended scopes:
-      - `repo` (or `public_repo` if only public repos are needed)
-      - `read:user` (optional)
+### 2️⃣ Install Dependencies
 
-    Notes:
-    - Never commit `.env.local` or secrets. This repo already ignores `*.local` in `.gitignore`.
+```bash
+npm install
+```
 
-    ---
+### 3️⃣ Configure Environment Variables
 
-    ## Common troubleshooting
+Create a `.env.local` file in the project root:
 
-    - "Component props validation failed: Invalid input: expected string, received undefined" — usually due to missing `VITE_TAMBO_API_KEY`. Add it to `.env.local` and restart the dev server.
-    - GitHub rate limit errors — add `VITE_GITHUB_TOKEN` with a PAT that has `repo` or `public_repo` scope.
+```env
+# Required: Tambo API Key
+VITE_TAMBO_API_KEY=your_tambo_api_key_here
 
-    ---
+# Recommended: GitHub Personal Access Token
+# Increases rate limits from 60/hour to 5000/hour
+VITE_GITHUB_TOKEN=ghp_your_github_token_here
+```
 
-    ## How to upload this project to GitHub
+> ⚠️ **Security Warning**: Never commit `.env.local` or any file containing secrets to version control!
 
-    1. Create a repository on GitHub (via the website or `gh` CLI).
+### 4️⃣ Start Development Server
 
-    2. From your local project root run:
+```bash
+npm run dev
+```
 
-    ```bash
-    git init
-    git add .
-    git commit -m "Initial commit"
-    # replace <username> and <repo> with your values
-    git remote add origin https://github.com/<username>/<repo>.git
-    git branch -M main
-    git push -u origin main
-    ```
+Open your browser to the URL shown in the terminal (typically `http://localhost:5173`)
 
-    If you prefer to use SSH, use the SSH remote URL provided by GitHub instead of HTTPS.
+---
 
-    ---
+## 📚 Documentation
 
-    ## Project structure (high level)
+### 🔧 Available Scripts
 
-    - `src/app/providers.tsx` — Tambo provider integration and context helpers
-    - `src/lib/tambo-registry.tsx` — registry of UI components (cards) passed to Tambo
-    - `src/components/cards` — card components used throughout the UI
-    - `src/services/github` — GitHub API helpers
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint code quality checks |
 
-    ---
+### 🔑 Environment Variables
 
-    ## Next steps I can help with
+#### Required Variables
 
-    - Add a `.env.example` file with variable names (no secrets)
-    - Commit and push the repository to your GitHub account (I can create the remote and push if you provide the remote URL)
+- **`VITE_TAMBO_API_KEY`** (Required)
+  - API key for Tambo AI integration
+  - Obtain from your [Tambo account](https://tambo.ai)
+  - Missing this will cause runtime validation errors
 
-    If you want me to commit and push these README changes, tell me the GitHub remote URL (or authorize a push) and I will create the commit and push it.
+#### Recommended Variables
+
+- **`VITE_GITHUB_TOKEN`** (Recommended)
+  - Personal Access Token for GitHub API
+  - **Benefits**: 
+    - Increases rate limits (60/hour → 5000/hour)
+    - Access to private repositories
+  - **Required Scopes**: 
+    - `repo` (or `public_repo` for public repos only)
+    - `read:user` (optional)
+
+### 📁 Project Structure
+
+```
+contexthub/
+├── src/
+│   ├── app/
+│   │   ├── providers.tsx      # Tambo AI provider setup
+│   │   └── globals.css        # Global styles
+│   ├── components/
+│   │   ├── cards/            # UI card components
+│   │   ├── layout/           # Layout components
+│   │   ├── tambo/            # Tambo-specific components
+│   │   └── ui/               # Reusable UI components
+│   ├── contexts/             # React contexts
+│   ├── hooks/                # Custom React hooks
+│   ├── lib/
+│   │   ├── tambo-registry.tsx # Component registry for AI
+│   │   ├── thread-hooks.ts    # Thread management
+│   │   └── utils.ts           # Utility functions
+│   ├── services/
+│   │   ├── github/           # GitHub API integration
+│   │   ├── smart-search/     # Intelligent search
+│   │   └── storage/          # Local storage utilities
+│   └── types/                # TypeScript type definitions
+├── public/                   # Static assets
+└── package.json             # Project dependencies
+```
+
+---
+
+## 🔐 Security Best Practices
+
+### Environment Variable Security
+
+1. **Never commit secrets**: Always use `.env.local` (already in `.gitignore`)
+2. **Rotate compromised keys**: If any secret is accidentally committed, rotate it immediately
+3. **Use minimal permissions**: Grant only necessary scopes to tokens
+
+### Removing Secrets from Git History
+
+If you accidentally committed secrets:
+
+```bash
+# Remove from tracking
+git rm --cached .env
+git commit -m "Remove environment file from tracking"
+
+# Remove from history (⚠️ rewrites history)
+git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch .env" \
+  --prune-empty --tag-name-filter cat -- --all
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+### Common Issues
+
+<details>
+<summary><strong>❌ "Component props validation failed: Invalid input: expected string, received undefined"</strong></summary>
+
+**Cause**: Missing `VITE_TAMBO_API_KEY` in `.env.local`
+
+**Solution**: 
+1. Create `.env.local` in project root
+2. Add `VITE_TAMBO_API_KEY=your_key_here`
+3. Restart dev server
+</details>
+
+<details>
+<summary><strong>❌ GitHub API Rate Limit Exceeded</strong></summary>
+
+**Cause**: No GitHub token configured (limited to 60 requests/hour)
+
+**Solution**:
+1. Create a GitHub Personal Access Token
+2. Add `VITE_GITHUB_TOKEN=ghp_...` to `.env.local`
+3. Restart dev server (rate limit increases to 5000/hour)
+</details>
+
+<details>
+<summary><strong>❌ Dev Server Won't Start</strong></summary>
+
+**Solutions**:
+1. Check Node.js version: `node --version` (should be 18+)
+2. Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
+3. Clear npm cache: `npm cache clean --force`
+</details>
+
+---
+
+## 🚢 Deployment
+
+### Deploy to GitHub Pages
+
+```bash
+# Build for production
+npm run build
+
+# Deploy dist folder to GitHub Pages
+# (Use gh-pages package or GitHub Actions)
+```
+
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/contexthub)
+
+1. Import your repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy!
+
+### Deploy to Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/contexthub)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these guidelines:
+
+### Development Workflow
+
+```bash
+# Create a feature branch
+git checkout -b feat/your-feature-name
+
+# Make your changes
+# ...
+
+# Run quality checks
+npm run lint
+npm run build
+
+# Commit with conventional commits
+git add .
+git commit -m "feat: add amazing feature"
+
+# Push and create PR
+git push origin feat/your-feature-name
+```
+
+### Code Review Guidelines
+
+- ✅ Run `npm run lint` before pushing
+- ✅ Include tests for non-trivial logic
+- ✅ Write clear commit messages
+- ✅ Update documentation for new features
+- ✅ Ensure build passes: `npm run build`
+
+### Commit Message Convention
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` New features
+- `fix:` Bug fixes
+- `docs:` Documentation changes
+- `style:` Code style changes (formatting)
+- `refactor:` Code refactoring
+- `test:` Test updates
+- `chore:` Build/tooling changes
+
+---
+
+## 🗺️ Roadmap
+
+### 🎯 Short-term Goals
+
+- [ ] Add `.env.example` template
+- [ ] Implement pre-commit hooks with Husky
+- [ ] Add CI/CD pipeline with GitHub Actions
+- [ ] Create comprehensive test suite
+
+### 🚀 Medium-term Features
+
+- [ ] **Code Review Automation**: Static analysis + SAST integration
+- [ ] **Protected Branches**: Enforce PR reviews before merge
+- [ ] **Security Scanning**: Snyk/Dependabot integration
+- [ ] **Performance Monitoring**: Add analytics and metrics
+
+### 🔮 Long-term Vision
+
+- [ ] **AI-Powered Code Fixes**: Tambo skills for automated refactoring
+- [ ] **Security-Focused AI**: Vulnerability detection and fixes
+- [ ] **Multi-Repository Support**: Manage multiple repos simultaneously
+- [ ] **Collaborative Features**: Team workspaces and shared insights
+- [ ] **Plugin System**: Extensible architecture for custom integrations
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+Built with amazing open-source technologies:
+
+- [React](https://reactjs.org/) - UI Framework
+- [TypeScript](https://www.typescriptlang.org/) - Type Safety
+- [Vite](https://vitejs.dev/) - Build Tool
+- [Tambo AI](https://tambo.ai) - AI Integration
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Octokit](https://github.com/octokit) - GitHub API
+- [Radix UI](https://www.radix-ui.com/) - Accessible Components
+
+---
+
+<div align="center">
+
+### ⭐ Star this repo if you find it helpful!
+
+**Made with ❤️ by the ContextHub Team**
+
+[Report Bug](https://github.com/yourusername/contexthub/issues) • [Request Feature](https://github.com/yourusername/contexthub/issues) • [Documentation](https://github.com/yourusername/contexthub/wiki)
+
+</div>
