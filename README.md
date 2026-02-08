@@ -151,7 +151,7 @@ Open your browser to the URL shown in the terminal (typically `http://localhost:
 
 - **`VITE_TAMBO_API_KEY`** (Required)
   - API key for Tambo AI integration
-  - Obtain from your [Tambo account](https://tambo.ai)
+  - Obtain from your [Tambo account]
   - Missing this will cause runtime validation errors
 
 #### Recommended Variables
